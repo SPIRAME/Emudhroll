@@ -21,6 +21,7 @@ The proxy listens on port 8080.
 4. Enable Use the same proxy for all protocols.
 5. Enter your computer's IP and port 8080.
 6. Continue through OOBE and it should unenrolol
+7. Note: If it says can't reach google and you are sure the chromeboook is on versions 152 and below then simply powerwash and try again (it means revocation occured and the client no longer trusts the emudhra cert)
 
 ## Permanent unenrollment (--permanent)
 
