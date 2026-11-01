@@ -26,8 +26,8 @@ The proxy listens on port 8080.
 
 1. Start the proxy: python main.py --permanent
 2. Go through OOBE on the Chromebook.
-3. When prompted, powerwash the device then press y.
-4. On powerwash, It will successfully unenrollol
+3. Powerwash the device after the proxy says it unenrolled
+4. Once powerwashed, It will successfully unenrollol
 
 ## Re-enroll (--enroll)
 
