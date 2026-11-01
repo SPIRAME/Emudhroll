@@ -42,6 +42,19 @@ class DMProxy:
             print("[proxy] sent crafted psm response to client")
             return
 
+        if not self.permanent and req_type == "device_state_retrieval":
+            response = proto.DeviceManagementResponse()
+            response.device_state_retrieval_response.restore_mode = 0
+
+            payload = response.SerializeToString()
+            flow.response = http.Response.make(
+                200, payload,
+                {"Content-Type": "application/x-protobuffer"},
+            )
+
+            print("[proxy] falling back, sent crafted device state retrieval response")
+            return
+
         if self.permanent and req_type == "policy":
             dmtoken = flow.request.headers["Authorization"].split("token=")[1]
             deviceid = flow.request.query.get("deviceid")
