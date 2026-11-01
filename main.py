@@ -11,7 +11,7 @@ import requests
 
 from pathlib import Path
 
-from mitmproxy import ctx, http
+from mitmproxy import http
 from mitmproxy.options import Options
 from mitmproxy.tools.dump import DumpMaster
 
@@ -87,7 +87,7 @@ class DMProxy:
             data.ParseFromString(response.content)
 
             if data.error_message:
-                ctx.log.error(f"unenrollment failed: {data.error_message}")
+                print(f"unenrollment failed: {data.error_message}")
                 return
 
             print(f"successfully unenrolled device {deviceid}")
