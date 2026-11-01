@@ -88,6 +88,7 @@ class DMProxy:
                 return
 
             print(f"successfully unenrolled device {deviceid}")
+            print("[proxy] you may now powerwash the device")
             self.master.shutdown()
 
 if args.enroll:
