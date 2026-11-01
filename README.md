@@ -37,3 +37,5 @@ The proxy listens on port 8080.
 
 1. Lxrd for for getting the unenrollment to work using the Emudhra CA Compromise
 2. Katie for improving the scripts
+3. Emudhra thank you for your incompetency
+   
