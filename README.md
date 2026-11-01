@@ -1,12 +1,14 @@
 # Setup
 
-1. Install requirements:
+1. Clone the repo:
+   git clone https://github.com/SPIRAME/Emudhroll && cd Emudhroll
+2. Install requirements:
    pip install -r requirements.txt
-2. Run the proxy:
+3. Run the proxy:
    python main.py
-3. Permanent unenrollment mode:
+4. Permanent unenrollment mode:
    python main.py --permanent
-4. Re-enroll:
+5. Re-enroll:
    python main.py --enroll
 
 The proxy listens on port 8080.
