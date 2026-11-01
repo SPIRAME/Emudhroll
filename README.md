@@ -32,7 +32,7 @@ The proxy listens on port 8080.
 ## Re-enroll (--enroll)
 
 1. Run: python main.py --enroll
-2. Enter the stable device secret (hex) when prompted.
+2. Enter the stable device secret (hex) when prompted (this is obtained via entering devmode and running vpd -l as root in vt2)
 3. On powerwash, it will successfully reenroll
 
 ## Credits
