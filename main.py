@@ -2,6 +2,7 @@ import argparse
 import asyncio
 import hashlib
 import hmac
+import logging
 import os
 import struct
 import sys
@@ -19,6 +20,7 @@ from dmbackend import device_management_backend_pb2 as proto
 args = argparse.ArgumentParser()
 args.add_argument("-p", "--permanent", action="store_true", help="permanent unenrollment mode")
 args.add_argument("-e", "--enroll", action="store_true", help="re enroll the device with the stable device secret")
+args.add_argument("-v", "--verbose", action="store_true", help="enable mitmproxy verbose logging")
 args = args.parse_args()
 
 class DMProxy:
@@ -139,8 +141,12 @@ if args.enroll:
 
 async def main():
     opts = Options(allow_hosts=["m.google.com"])
-    master = DumpMaster(opts, with_termlog=False, with_dumper=False)
+    master = DumpMaster(opts, with_termlog=args.verbose, with_dumper=args.verbose)
     master.addons.add(DMProxy(master, permanent=args.permanent))
+
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
+
     opts.update(emudhra=True)
 
     print("[proxy] listening at *:8080")
