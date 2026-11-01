@@ -44,9 +44,9 @@ class DMProxy:
             print("[proxy] sent crafted psm response to client")
             return
 
-        if not self.permanent and req_type == "device_state_retrieval":
+        if req_type == "device_state_retrieval":
             response = proto.DeviceManagementResponse()
-            response.device_state_retrieval_response.restore_mode = 0
+            response.device_state_retrieval_response.restore_mode = 0 if not self.permanent else 4
 
             payload = response.SerializeToString()
             flow.response = http.Response.make(
@@ -54,7 +54,7 @@ class DMProxy:
                 {"Content-Type": "application/x-protobuffer"},
             )
 
-            print("[proxy] falling back, sent crafted device state retrieval response")
+            print("[proxy] sent crafted device state retrieval response")
             return
 
         if self.permanent and req_type == "policy":
@@ -63,9 +63,6 @@ class DMProxy:
 
             print(f"[proxy] got dmtoken: {dmtoken}")
             Path("dmtoken.txt").write_text(f"{deviceid}:{dmtoken}")
-
-            if input("powerwash the device, then press y to continue: ").strip().lower() != "y":
-                return
 
             policy_fetch_request = proto.PolicyFetchRequest()
             policy_fetch_request.policy_type = "google/chromeos/device"
