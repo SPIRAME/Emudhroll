@@ -1,0 +1,2 @@
+mitmproxy>=12.3
+protobuf>=5.0
