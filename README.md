@@ -26,7 +26,7 @@ This works on version 152 and below (if it doesn't work on 152, try a lower vers
 4. Set to Manual proxy configuration
 5. Enable Use the same proxy for all protocols
 6. Enter your computer's IP and port 8080
-7. Continue through OOBE and it should unenroll
+7. Continue through OOBE and it should unenrolol
 
 For every failed attempt, you must restart from step 1, as there is a 99% chance that the certificate got revoked.
 
